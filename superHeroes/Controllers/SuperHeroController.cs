@@ -23,6 +23,7 @@ namespace superHeroes.Controllers
 
         public ActionResult List()
         {
+            
             return View(db.SuperHeroes);
         }
 
@@ -45,7 +46,6 @@ namespace superHeroes.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
                 db.SuperHeroes.Add(hero);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
@@ -93,25 +93,46 @@ namespace superHeroes.Controllers
         }
 
         // GET: SuperHero/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: SuperHero/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int? id)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                return View(db.SuperHeroes.Where(x => x.id == id).FirstOrDefault());
             }
             catch
             {
                 return View();
             }
         }
+
+        [HttpPost]
+        public ActionResult Delete(SuperHero hero)
+        {
+            SuperHero removedHero = db.SuperHeroes.Where(x => x.id == hero.id).FirstOrDefault();
+            db.SuperHeroes.Remove(removedHero);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
+        // POST: SuperHero/Delete/5
+        /*
+        [HttpPost]
+        public ActionResult Delete(string[] id)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                SuperHero delete = db.SuperHeroes.Where(x => x.id == Int32.Parse(id[0])).FirstOrDefault();
+                db.SuperHeroes.Remove(delete);
+                db.SaveChanges();
+                return RedirectToAction("Index", "SuperHero");
+            }
+            catch
+            {
+               return View("Index", "SuperHero");
+            }
+        }*/
     }
 }

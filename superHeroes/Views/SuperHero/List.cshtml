@@ -6,14 +6,34 @@
     ViewBag.Title = "List";
 }
 
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
 <h2>List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<script type="text/javascript">
+    function DeleteHero(id) {
+        var value = [];
+        value[0] = id;
+        var values = JSON.stringify(value);
+        $.ajax({
+            type: "GET",
+            url: "/SuperHero/Delete/"+id,
+             
+            success: function (result) {
+                alert("Hero Deleted");
+            },
+           
+        });
+
+    }
+</script>
 <table class="table">
-    <!--<tr>
+    <tr>
         <th>
             @Html.DisplayNameFor(model => model.name)
         </th>
@@ -30,8 +50,8 @@
             @Html.DisplayNameFor(model => model.catchPhrase)
         </th>
         <th></th>
-    </tr>-->
-
+    </tr>
+    
     @foreach (var item in Model)
     {
         <tr>
@@ -42,7 +62,8 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
                 @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                <!--/*Html.ActionLink("Delete", "Delete", new { id = item.id })*/-->
+                <a onclick="DeleteHero(@item.id)">Delete</a>
             </td>
         </tr>
     }
