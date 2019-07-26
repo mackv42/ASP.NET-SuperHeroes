@@ -21,7 +21,7 @@
         value[0] = id;
         var values = JSON.stringify(value);
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "/SuperHero/Delete/"+id,
              
             success: function (result) {

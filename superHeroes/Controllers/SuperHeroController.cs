@@ -114,25 +114,5 @@ namespace superHeroes.Controllers
             return RedirectToAction("Index");
         }
 
-
-
-        // POST: SuperHero/Delete/5
-        /*
-        [HttpPost]
-        public ActionResult Delete(string[] id)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-                SuperHero delete = db.SuperHeroes.Where(x => x.id == Int32.Parse(id[0])).FirstOrDefault();
-                db.SuperHeroes.Remove(delete);
-                db.SaveChanges();
-                return RedirectToAction("Index", "SuperHero");
-            }
-            catch
-            {
-               return View("Index", "SuperHero");
-            }
-        }*/
     }
 }
