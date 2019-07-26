@@ -1,4 +1,5 @@
-﻿using System;
+﻿using superHeroes.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,13 @@ namespace superHeroes.Controllers
 {
     public class SuperHeroController : Controller
     {
+        private ApplicationDbContext db;
         // GET: SuperHero
+        public SuperHeroController()
+        {
+            db = new ApplicationDbContext();
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -17,24 +24,26 @@ namespace superHeroes.Controllers
         // GET: SuperHero/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(db.SuperHeroes.Where((x) => x.id == id).FirstOrDefault());
         }
 
         // GET: SuperHero/Create
         public ActionResult Create()
         {
-            return View();
+            SuperHero hero = new SuperHero();
+            return View(hero);
         }
 
         // POST: SuperHero/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(SuperHero hero)
         {
             try
             {
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                db.SuperHeroes.Add(hero);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
             }
             catch
             {

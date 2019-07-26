@@ -178,6 +178,10 @@
     <Compile Include="Migrations\201907261442296_AddSuperHeroes.Designer.cs">
       <DependentUpon>201907261442296_AddSuperHeroes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907261556314_changingPrimaryKey.cs" />
+    <Compile Include="Migrations\201907261556314_changingPrimaryKey.Designer.cs">
+      <DependentUpon>201907261556314_changingPrimaryKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -243,6 +247,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\SuperHero\Create.cshtml" />
+    <Content Include="Views\SuperHero\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -263,6 +268,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201907261442296_AddSuperHeroes.resx">
       <DependentUpon>201907261442296_AddSuperHeroes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907261556314_changingPrimaryKey.resx">
+      <DependentUpon>201907261556314_changingPrimaryKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
