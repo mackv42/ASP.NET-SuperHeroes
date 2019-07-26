@@ -59,17 +59,31 @@ namespace superHeroes.Controllers
         // GET: SuperHero/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            try
+            {
+                return View(db.SuperHeroes.Where(x => x.id == id).FirstOrDefault());
+            }
+            catch
+            {
+                //Need a 404 page
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // POST: SuperHero/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(SuperHero hero)
         {
             try
             {
                 // TODO: Add update logic here
-
+                SuperHero modify = db.SuperHeroes.Where(x => x.id == hero.id ).FirstOrDefault();
+                modify.name = hero.name;
+                modify.catchPhrase = hero.catchPhrase;
+                modify.alterEgo = hero.alterEgo;
+                modify.primaryAbility = hero.primaryAbility;
+                modify.secondaryAbility = hero.secondaryAbility;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
