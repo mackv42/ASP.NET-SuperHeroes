@@ -18,7 +18,12 @@ namespace superHeroes.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("List");
+        }
+
+        public ActionResult List()
+        {
+            return View(db.SuperHeroes);
         }
 
         // GET: SuperHero/Details/5
