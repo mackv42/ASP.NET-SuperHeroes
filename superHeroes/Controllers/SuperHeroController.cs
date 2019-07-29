@@ -131,18 +131,25 @@ namespace superHeroes.Controllers
         public ActionResult uploadImage(int? id, HttpPostedFileBase file)
         {
             SuperHero hero = db.SuperHeroes.Where(x => x.id == id).FirstOrDefault();
-            if (ModelState.IsValid)
+            try
             {
-                if (file != null)
+                if (ModelState.IsValid)
                 {
-                    file.SaveAs(HttpContext.Server.MapPath("/Images/")
-                                                          + file.FileName);
-                    hero.imgPath = file.FileName;
+                    if (file != null)
+                    {
+                        file.SaveAs(HttpContext.Server.MapPath("/Images/")
+                                                              + file.FileName);
+                        hero.imgPath = file.FileName;
+                    }
+
+                    db.SaveChanges();
                 }
-                
-                db.SaveChanges();
             }
-            return View("Edit");
+            catch (Exception E)
+            {
+                return RedirectToAction("Edit/"+id.ToString());
+            }
+            return RedirectToAction("Edit/"+id.ToString());
         }
     }
 }
