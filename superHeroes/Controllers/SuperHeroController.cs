@@ -15,7 +15,10 @@ namespace superHeroes.Controllers
         {
             db = new ApplicationDbContext();
         }
-
+        public ActionResult Home()
+        {
+            return RedirectToAction("Index");
+        }
         public ActionResult Index()
         {
             return RedirectToAction("List");
@@ -48,7 +51,7 @@ namespace superHeroes.Controllers
             {
                 db.SuperHeroes.Add(hero);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -66,7 +69,7 @@ namespace superHeroes.Controllers
             catch
             {
                 //Need a 404 page
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
         }
 

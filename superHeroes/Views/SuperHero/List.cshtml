@@ -15,43 +15,10 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<script type="text/javascript">
-    function DeleteHero(id) {
-        var value = [];
-        value[0] = id;
-        var values = JSON.stringify(value);
-        $.ajax({
-            type: "POST",
-            url: "/SuperHero/Delete/"+id,
-             
-            success: function (result) {
-                alert("Hero Deleted");
-            },
-           
-        });
-
-    }
-</script>
+<script type="text/javascript" src="/Scripts/Utils.js"></script>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.alterEgo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.primaryAbility)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.secondaryAbility)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.catchPhrase)
-        </th>
-        <th></th>
-    </tr>
-    
+
+
     @foreach (var item in Model)
     {
         <tr>
@@ -64,6 +31,10 @@
                 @Html.ActionLink("Details", "Details", new { id = item.id }) |
                 <!--/*Html.ActionLink("Delete", "Delete", new { id = item.id })*/-->
                 <a onclick="DeleteHero(@item.id)">Delete</a>
+            </td>
+
+            <td>
+                <img src="/Images/spiderMan.jpg" style="float: right;"/>
             </td>
         </tr>
     }
