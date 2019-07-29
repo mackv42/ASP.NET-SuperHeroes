@@ -16,11 +16,11 @@
 </p>
 
 <script type="text/javascript" src="/Scripts/Utils.js"></script>
-<table class="table">
-
-
+<div style="display: flex; flex-wrap: wrap">
+<table class="table" style="float: left; width: 65%;">
     @foreach (var item in Model)
     {
+        
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.name)
@@ -32,11 +32,11 @@
                 <!--/*Html.ActionLink("Delete", "Delete", new { id = item.id })*/-->
                 <a onclick="DeleteHero(@item.id)">Delete</a>
             </td>
-
-            <td>
-                <img src="/Images/spiderMan.jpg" style="float: right;"/>
-            </td>
         </tr>
     }
 
 </table>
+<div style="float: right;">
+    <img src="/Images/spiderMan.jpg" style="float: right;" />
+</div>
+</div>
