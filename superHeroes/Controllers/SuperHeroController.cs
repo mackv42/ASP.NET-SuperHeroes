@@ -128,7 +128,7 @@ namespace superHeroes.Controllers
 
 
         [HttpPost]
-        public void uploadImage(int? id, HttpPostedFileBase file)
+        public ActionResult uploadImage(int? id, HttpPostedFileBase file)
         {
             SuperHero hero = db.SuperHeroes.Where(x => x.id == id).FirstOrDefault();
             if (ModelState.IsValid)
@@ -142,6 +142,7 @@ namespace superHeroes.Controllers
                 
                 db.SaveChanges();
             }
+            return View("Edit");
         }
     }
 }
