@@ -11,3 +11,10 @@
         });
     }
 }
+
+function increment(id) {
+    $.ajax({
+        type: "POST",
+        url: "/SuperHero/Click/" + id,
+    });
+}

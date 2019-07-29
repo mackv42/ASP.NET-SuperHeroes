@@ -28,9 +28,9 @@
 
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                <a href="/superhero/Details/@item.id" onclick="increment(@item.id)">Details</a> } |
                 <!--/*Html.ActionLink("Delete", "Delete", new { id = item.id })*/-->
-                <a onclick="DeleteHero(@item.id)">Delete</a>
+                <a href="" onclick="DeleteHero(@item.id)">Delete</a>
             </td>
         </tr>
     }

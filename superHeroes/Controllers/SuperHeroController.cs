@@ -17,7 +17,7 @@ namespace superHeroes.Controllers
         }
         public ActionResult Home()
         {
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
         public ActionResult Index()
         {
@@ -27,7 +27,7 @@ namespace superHeroes.Controllers
         public ActionResult List()
         {
             
-            return View(db.SuperHeroes);
+            return View(db.SuperHeroes.OrderBy(x=>-x.clicks));
         }
 
         // GET: SuperHero/Details/5
@@ -109,13 +109,21 @@ namespace superHeroes.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(SuperHero hero)
+        public void Delete(SuperHero hero)
         {
             SuperHero removedHero = db.SuperHeroes.Where(x => x.id == hero.id).FirstOrDefault();
             db.SuperHeroes.Remove(removedHero);
             db.SaveChanges();
-            return RedirectToAction("Index");
+           
+            //return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public void Click(int id)
+        {
+            SuperHero hero = db.SuperHeroes.Where(x => x.id == id).FirstOrDefault();
+            hero.clicks++;
+            db.SaveChanges();
+        }
     }
 }

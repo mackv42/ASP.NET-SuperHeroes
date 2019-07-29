@@ -182,6 +182,10 @@
     <Compile Include="Migrations\201907261556314_changingPrimaryKey.Designer.cs">
       <DependentUpon>201907261556314_changingPrimaryKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907291538094_addclicks.cs" />
+    <Compile Include="Migrations\201907291538094_addclicks.Designer.cs">
+      <DependentUpon>201907291538094_addclicks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -274,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907261556314_changingPrimaryKey.resx">
       <DependentUpon>201907261556314_changingPrimaryKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907291538094_addclicks.resx">
+      <DependentUpon>201907291538094_addclicks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
