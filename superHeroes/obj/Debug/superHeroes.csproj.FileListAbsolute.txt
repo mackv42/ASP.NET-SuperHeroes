@@ -107,3 +107,4 @@ C:\Users\Vincent\source\repos\superHeroes\superHeroes\obj\Debug\superHeroes.Migr
 C:\Users\Vincent\source\repos\superHeroes\superHeroes\obj\Debug\superHeroes.csproj.GenerateResource.cache
 C:\Users\Vincent\source\repos\superHeroes\superHeroes\obj\Debug\superHeroes.Migrations.changingPrimaryKey.resources
 C:\Users\Vincent\source\repos\superHeroes\superHeroes\obj\Debug\superHeroes.Migrations.addclicks.resources
+C:\Users\Vincent\source\repos\superHeroes\superHeroes\obj\Debug\superHeroes.Migrations.addImages.resources

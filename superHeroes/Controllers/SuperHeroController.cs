@@ -31,7 +31,7 @@ namespace superHeroes.Controllers
         }
 
         // GET: SuperHero/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
             return View(db.SuperHeroes.Where((x) => x.id == id).FirstOrDefault());
         }
@@ -60,7 +60,7 @@ namespace superHeroes.Controllers
         }
 
         // GET: SuperHero/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
             try
             {
@@ -124,6 +124,24 @@ namespace superHeroes.Controllers
             SuperHero hero = db.SuperHeroes.Where(x => x.id == id).FirstOrDefault();
             hero.clicks++;
             db.SaveChanges();
+        }
+
+
+        [HttpPost]
+        public void uploadImage(int? id, HttpPostedFileBase file)
+        {
+            SuperHero hero = db.SuperHeroes.Where(x => x.id == id).FirstOrDefault();
+            if (ModelState.IsValid)
+            {
+                if (file != null)
+                {
+                    file.SaveAs(HttpContext.Server.MapPath("/Images/")
+                                                          + file.FileName);
+                    hero.imgPath = file.FileName;
+                }
+                
+                db.SaveChanges();
+            }
         }
     }
 }

@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>SuperHero</h4>
         <hr />
@@ -63,12 +63,31 @@
             </div>
         </div>
     </div>
-}
 
+
+}
+@using (Html.BeginForm((Model.id).ToString(), "superhero/uploadImage", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Image</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.imgPath)
+        </div>
+        <div class="editor-field">
+            <input id="ImagePath" title="Upload a product image"
+                   type="file" name="file" />
+        </div>
+        <p><input type="submit" value="Create" /></p>
+    </fieldset>
+}
 <div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

@@ -15,6 +15,7 @@ namespace superHeroes.Models
         public string primaryAbility { get; set; }
         public string secondaryAbility { get; set; }
         public string catchPhrase { get; set; }
+        public string imgPath { get; set; }
         public int clicks { get; set; }
     }
 }
