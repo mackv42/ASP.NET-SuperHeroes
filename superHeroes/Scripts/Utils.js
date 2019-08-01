@@ -5,8 +5,7 @@
             url: "/SuperHero/Delete/" + id,
 
             success: function (result) {
-                alert("Hero Deleted");
-                document.location.reload(true); 
+                setTimeout(document.location.reload(true), 1000); 
             }
         });
     }
